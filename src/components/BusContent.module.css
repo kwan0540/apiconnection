@@ -1,0 +1,37 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    overflow: visible;
+}
+
+.content button {
+    margin: 10px;
+}
+
+.content h1 {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.c1 {
+    overflow: visible;
+    margin: 1px;
+}
+
+.content p {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 2px;
+}
+
+.content ul {
+    list-style: none;
+    margin: 5px ;
+    padding: 0;
+}
+
+.Select {
+    margin-bottom: 10px;
+}
