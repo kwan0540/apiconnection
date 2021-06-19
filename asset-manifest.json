@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/apiconnection/static/css/main.7ba8fff9.chunk.css",
-    "main.js": "/apiconnection/static/js/main.f3fe64bf.chunk.js",
-    "main.js.map": "/apiconnection/static/js/main.f3fe64bf.chunk.js.map",
+    "main.css": "/apiconnection/static/css/main.8154e9d6.chunk.css",
+    "main.js": "/apiconnection/static/js/main.86a86f7c.chunk.js",
+    "main.js.map": "/apiconnection/static/js/main.86a86f7c.chunk.js.map",
     "runtime-main.js": "/apiconnection/static/js/runtime-main.c9d6aac8.js",
     "runtime-main.js.map": "/apiconnection/static/js/runtime-main.c9d6aac8.js.map",
     "static/js/2.ad63f43e.chunk.js": "/apiconnection/static/js/2.ad63f43e.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.f8c25cdb.chunk.js": "/apiconnection/static/js/3.f8c25cdb.chunk.js",
     "static/js/3.f8c25cdb.chunk.js.map": "/apiconnection/static/js/3.f8c25cdb.chunk.js.map",
     "index.html": "/apiconnection/index.html",
-    "static/css/main.7ba8fff9.chunk.css.map": "/apiconnection/static/css/main.7ba8fff9.chunk.css.map",
+    "static/css/main.8154e9d6.chunk.css.map": "/apiconnection/static/css/main.8154e9d6.chunk.css.map",
     "static/js/2.ad63f43e.chunk.js.LICENSE.txt": "/apiconnection/static/js/2.ad63f43e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c9d6aac8.js",
     "static/js/2.ad63f43e.chunk.js",
-    "static/css/main.7ba8fff9.chunk.css",
-    "static/js/main.f3fe64bf.chunk.js"
+    "static/css/main.8154e9d6.chunk.css",
+    "static/js/main.86a86f7c.chunk.js"
   ]
 }
