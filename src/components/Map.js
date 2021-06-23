@@ -7,9 +7,7 @@ const containerStyle = {
   height: '400px'
 };
 
-console.log(process.env)
 const apikey = process.env.REACT_APP_API_KEY
-console.log(apikey)
 
 
 function Map(props) {
