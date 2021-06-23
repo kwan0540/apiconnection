@@ -2,18 +2,19 @@ import React ,{useState, useEffect}from 'react'
 import classes from './BusContent.module.css'
 import Card from '../UI/Card'
 import BusItem from './BusItem'
+import Map from './Map'
 
 
 const BusContent = (props) => {
   const [busData,setBusData] = useState([])
-  const [selectedValue, setSelectedValue] = useState()  
+  const [selectedValue, setSelectedValue] = useState()
   const [uniqueBusData, setUniqueBusData] = useState([])  
   const [isLoaded,setIsLoaded] = useState(false)
   const [error,setError] = useState(null)
   const [time, setTime] = useState('')
-
+  const [changed,setChanged] = useState(false)
+  let now = new Date()
 async function fetchdata () {
-    let now = new Date()
     setTime(now)
     setUniqueBusData([])
     try {
@@ -27,7 +28,7 @@ async function fetchdata () {
         return {
           key: Math.random(),
           BusEta: new Date(x.eta),
-          busRoute: x.route
+          busRoute: x.route,
         }
       })
       console.log(data)
@@ -57,7 +58,9 @@ async function fetchdata () {
     const onChangeHandler = (event) => {
         setSelectedValue(event.target.value)
         console.log(selectedValue)
+        setChanged(true)
     }
+
 
 
   useEffect(() => {
@@ -85,9 +88,13 @@ async function fetchdata () {
     content = <p>{error}</p>
   }
 
+
+
   return (
     <div className={classes.content}>
     <h1>天耀巴士站路線</h1>
+    <Map data={busData.filter(x=> x.busRoute === selectedValue).map(x => (x.BusEta.getTime() - time.getTime()))} time={time} 
+    changed={changed} value={selectedValue}/>
     <button onClick = {fetchdata}>更新</button>
     <h1>請選取你要查詢的路線</h1>
     <select className={classes.Select} onChange={onChangeHandler} value={selectedValue}>

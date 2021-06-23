@@ -19,8 +19,8 @@ const BusItem = props => {
         <li className={classes.bus}>
             
                 <h3>{props.busroute}</h3>
-                <div>{props.hours} : {content2}</div>
-                <div>{content}</div>
+                <div className={classes.hour}>抵達時間: {props.hours} : {content2}</div>
+                <div className={classes.remaining}>{content}</div>
         </li>
     )
 }

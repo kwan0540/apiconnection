@@ -8,8 +8,6 @@ const id = '7898B605E39613A8'
 const url = `https://data.etabus.gov.hk/v1/transport/kmb/stop-eta/${id}`
 
 
-
-
 function App() {
   return (
   <React.Fragment>
