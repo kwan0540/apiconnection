@@ -13,6 +13,7 @@ const BusContent = (props) => {
   const [error,setError] = useState(null)
   const [time, setTime] = useState('')
   const [changed,setChanged] = useState(false)
+  const [busTime, setBusTime] = useState([])
   let now = new Date()
 async function fetchdata () {
     setTime(now)
@@ -52,6 +53,20 @@ async function fetchdata () {
           setUniqueBusData(old => [...old, busData[i].busRoute])
       }
   }}
+
+
+    const dataHandle = () => {
+      let bus = busData
+      var arr2 = bus.reduce( (a,b) => {
+        var i = a.findIndex( x => x.BusEta.getTime() === b.BusEta.getTime());
+        return i === -1 ? a.push(b) : a[i].times++, a;
+    }, []);
+    setBusTime(arr2)
+        }
+    
+    
+    console.log(busTime)
+  
   let selection = uniqueBusData.map (x => 
     <option value={x}>{x}</option>)
 
@@ -70,13 +85,14 @@ async function fetchdata () {
 
   useEffect(() => {
       storedata()
+      dataHandle()
   }, [busData])
 
   let content = <p>no Found</p>
 
     if (isLoaded && busData.length >0) {
       console.log(busData);
-      content = busData.filter(x => x.busRoute === selectedValue).map(x => 
+      content = busTime.filter(x => x.busRoute === selectedValue).map(x => 
       <BusItem busroute={x.busRoute}
       hours = {x.BusEta.getHours()}
       minutes = {x.BusEta.getMinutes()}
@@ -89,12 +105,11 @@ async function fetchdata () {
   }
 
 
-
   return (
     <div className={classes.content}>
     <h1>天耀巴士站路線</h1>
     <Map data={busData.filter(x=> x.busRoute === selectedValue).map(x => (x.BusEta.getTime() - time.getTime()))} time={time} 
-    changed={changed} value={selectedValue}/>
+    changed={changed} value={selectedValue}/> 
     <button onClick = {fetchdata}>更新</button>
     <h1>請選取你要查詢的路線</h1>
     <select className={classes.Select} onChange={onChangeHandler} value={selectedValue}>
