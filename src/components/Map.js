@@ -49,14 +49,14 @@ function Map(props) {
       setCenter({lat: 22.452259, lng: 114.002123})
     }, 200);
     return () => clearTimeout(timer);
-  }, []);
+  }, [props.value]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setZoom(17)
     }, 250);
     return () => clearTimeout(timer);
-  }, []);
+  }, [props.value]);
 
   useEffect(() => {
     
