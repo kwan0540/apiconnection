@@ -15,7 +15,7 @@ const BusContent = (props) => {
   const [changed,setChanged] = useState(false)
   const [busTime, setBusTime] = useState([])
   let now = new Date()
-async function fetchdata () {
+  async function fetchdata () {
     setTime(now)
     setUniqueBusData([])
     try {
@@ -27,17 +27,14 @@ async function fetchdata () {
 
       const Bus = data.data.map(x => {
         return {
-          key: Math.random(),
+          //key: Math.random(),
           BusEta: new Date(x.eta),
           busRoute: x.route,
         }
       })
-      console.log(data)
       setIsLoaded(true)
-      console.log(Bus);
       setBusData(Bus)
       setUniqueBusData(old =>[...old, Bus[0].busRoute])
-      console.log(selectedValue)
       if (selectedValue === undefined) {
         setSelectedValue(Bus[0].busRoute)
       } else {
@@ -54,25 +51,20 @@ async function fetchdata () {
       }
   }}
 
-
     const dataHandle = () => {
       let bus = busData
-      var arr2 = bus.reduce( (a,b) => {
-        var i = a.findIndex( x => x.BusEta.getTime() === b.BusEta.getTime());
-        return i === -1 ? a.push(b) : a[i].times++, a;
-    }, []);
-    setBusTime(arr2)
+      let arr2 = new Set(bus.map(item => JSON.stringify(item)))
+      let arr3 = Array.from(arr2).map(item => JSON.parse(item))
+      arr3.map(item => item.BusEta = new Date(item.BusEta))
+      setBusTime(arr3)
         }
     
     
-    console.log(busTime)
   
-  let selection = uniqueBusData.map (x => 
-    <option value={x}>{x}</option>)
+  let selection = uniqueBusData.map (x => <option value={x}>{x}</option>)
 
     const onChangeHandler = (event) => {
         setSelectedValue(event.target.value)
-        console.log(selectedValue)
         setChanged(true)
     }
 
@@ -91,7 +83,6 @@ async function fetchdata () {
   let content = <p>no Found</p>
 
     if (isLoaded && busData.length >0) {
-      console.log(busData);
       content = busTime.filter(x => x.busRoute === selectedValue).map(x => 
       <BusItem busroute={x.busRoute}
       hours = {x.BusEta.getHours()}

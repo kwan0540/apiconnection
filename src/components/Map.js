@@ -13,7 +13,6 @@ const apikey = process.env.REACT_APP_API_KEY
 function Map(props) {
   const remaining = (props.data[0])
   const remainingSecond = Math.floor(remaining/1000)
-  console.log(remainingSecond)
   //const remaining = props.Time.getTime()
   //let remaining = Math.floor((props.data[0].BusEta.getTime() - props.Time.getTime())/1000)
   //console.log(remaining)
@@ -47,6 +46,7 @@ function Map(props) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setCenter({lat: 22.452259, lng: 114.002123})
+      setZoom(17)
     }, 200);
     return () => clearTimeout(timer);
   }, [props.value]);
@@ -56,7 +56,7 @@ function Map(props) {
       setZoom(17)
     }, 250);
     return () => clearTimeout(timer);
-  }, [props.value]);
+  }, []);
 
   useEffect(() => {
     
@@ -67,16 +67,12 @@ function Map(props) {
       })
     }, 1000)
     setValid(timer)
-    console.log('initiate')
     return () => clearInterval(timer)
   }, [props.value]);
-
-  console.log(props.value)
 
   useEffect(() => {
       clearInterval(valid)
       setLocation(startingPoint)
-      console.log('clear')
   },[props.value])
 
   if (location.lat < endPoint.lat) {
